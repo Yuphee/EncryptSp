@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -13,11 +18,10 @@ android {
         ndk {
             abiFilters "armeabi-v7a"
         }
-    }
-    sourceSets {
-        main() {
-            jniLibs.srcDirs = ['src/main/jniLibs']
-            jni.srcDirs = [] //屏蔽掉默认的jni编译生成过程
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "encryptsp_v${variant.versionName}_${variant.buildType.name}.apk"
+            }
         }
     }
     buildTypes {
@@ -25,6 +29,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

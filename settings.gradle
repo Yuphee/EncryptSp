@@ -1,2 +1,2 @@
-include ':app', ':lib', ':hawk'
+include ':app', ':lib'
 rootProject.name='EncryptSp'

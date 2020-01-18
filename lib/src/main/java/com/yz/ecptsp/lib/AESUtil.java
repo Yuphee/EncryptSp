@@ -86,7 +86,7 @@ public class AESUtil {
     }
 
     public static String getBK1() {
-        return "yzprj";
+        return BuildConfig.BK1;
     }
 
     public static String getBK2(int n) {
