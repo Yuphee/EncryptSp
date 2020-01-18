@@ -18,25 +18,25 @@ android {
         textOutput 'stdout'
     }
 
-    sourceSets {
-        main() {
-            jniLibs.srcDirs = ['src/main/jniLibs']
-            jni.srcDirs = [] //屏蔽掉默认的jni编译生成过程
-        }
-    }
+//    sourceSets {
+//        main() {
+//            jniLibs.srcDirs = ['src/main/jniLibs']
+//            jni.srcDirs = [] //屏蔽掉默认的jni编译生成过程
+//        }
+//    }
 
-    buildTypes {
-        debug {
-            minifyEnabled false
-            buildConfigField 'String', 'BK1', '"yzprj"'
-        }
-
-        release {
-            minifyEnabled true
-            buildConfigField 'String', 'BK1', '"yzprjs"'
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+//    buildTypes {
+//        debug {
+//            minifyEnabled false
+//            buildConfigField 'String', 'BK1', '"yzprj"'
+//        }
+//
+//        release {
+//            minifyEnabled true
+//            buildConfigField 'String', 'BK1', '"yzprjs"'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
 
 }
 
